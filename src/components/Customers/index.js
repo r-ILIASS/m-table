@@ -1,5 +1,10 @@
 import React from "react";
+import Nav from "../Nav";
 
-const Customers = () => <h1>Customers Component</h1>;
-
+const Customers = () => (
+  <>
+    <Nav />
+    <h1>Customers Component</h1>
+  </>
+);
 export default Customers;

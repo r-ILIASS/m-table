@@ -1,5 +1,11 @@
 import React from "react";
+import Nav from "../Nav";
 
-const Rentals = () => <h1>Rentals Component</h1>;
+const Rentals = () => (
+  <>
+    <Nav />
+    <h1>Rentals Component</h1>
+  </>
+);
 
 export default Rentals;
