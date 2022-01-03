@@ -16,3 +16,5 @@ Button.propTypes = {
 };
 
 export default Button;
+
+// variant property can either be: "blue", "red" or "empty".
