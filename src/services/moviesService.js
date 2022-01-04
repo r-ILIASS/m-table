@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiUrl = "https://mockmoviesbackend.herokuapp.com/api";
+const apiUrl = "http://localhost:4000/api";
 const apiEndpoint = apiUrl + "/movies";
 
 function movieUrl(id) {

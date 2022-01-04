@@ -14,6 +14,8 @@ export const Wrapper = styled.button`
         case "red":
           return "--red";
           break;
+        default:
+          return "--white";
       }
     }}
   );
@@ -24,10 +26,10 @@ export const Wrapper = styled.button`
 
   cursor: pointer;
 
-  font-size: 20px;
+  font-size: ${({ size }) => (size === "small" ? "14px" : "20px")};
   font-weight: 500;
 
   @media screen and (max-width: 768px) {
-    font-size: 16px;
+    font-size: ${({ size }) => (size === "small" ? "12px" : "16px")};
   }
 `;

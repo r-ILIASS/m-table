@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 // Styles
 import { Wrapper } from "./Button.styles";
 
-const Button = ({ label, variant, onClick }) => (
-  <Wrapper type="button" variant={variant} onClick={onClick}>
+const Button = ({ label, variant, size, onClick }) => (
+  <Wrapper type="button" variant={variant} size={size} onClick={onClick}>
     {label}
   </Wrapper>
 );
