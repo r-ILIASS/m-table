@@ -5,17 +5,12 @@ import { useMovies } from "../../hooks/useMovies";
 import Nav from "../Nav";
 import Button from "../common/Button";
 import Like from "../common/Like";
+import Spinner from "../common/Spinner";
 // Styles
 import { Wrapper, Content } from "./Movies.styles";
 
 const Movies = () => {
   const { data, loading, handleLike, handleDelete } = useMovies();
-
-  if (loading) {
-    console.log("Loading ....");
-  } else if (data.length > 0) {
-    console.log("data ", data);
-  }
 
   return (
     <>
@@ -23,7 +18,7 @@ const Movies = () => {
       <Wrapper>
         <Content>
           {data.length === 0 ? (
-            <h1>There are no movies in the database</h1>
+            <h1>There is no data to show</h1>
           ) : (
             <>
               <p>{`There are ${data.length} movies in the database`}</p>
@@ -64,12 +59,10 @@ const Movies = () => {
           )}
         </Content>
       </Wrapper>
-
       <br />
       <br />
       <br />
-
-      {loading && <h1>Loading ....</h1>}
+      {loading && <Spinner />}
     </>
   );
 };
