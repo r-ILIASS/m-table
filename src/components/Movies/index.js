@@ -3,14 +3,27 @@ import React from "react";
 import { useMovies } from "../../hooks/useMovies";
 // Components
 import Nav from "../Nav";
-import Button from "../common/Button";
 import Like from "../common/Like";
+import Button from "../common/Button";
 import Spinner from "../common/Spinner";
+import Pagination from "../common/Pagination";
 // Styles
 import { Wrapper, Content } from "./Movies.styles";
 
 const Movies = () => {
-  const { data, loading, handleLike, handleDelete } = useMovies();
+  const {
+    data,
+    pageSize,
+    currentPage,
+    setCurrentPage,
+    loading,
+    handleLike,
+    handleDelete,
+  } = useMovies();
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
@@ -59,6 +72,12 @@ const Movies = () => {
                   ))}
                 </tbody>
               </table>
+              <Pagination
+                itemsCount={data.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onClick={handlePageChange}
+              />
             </>
           )}
         </Content>

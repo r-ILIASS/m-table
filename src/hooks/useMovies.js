@@ -4,6 +4,8 @@ import { getMovies, deleteMovie, toggleLike } from "../services/moviesService";
 
 export const useMovies = () => {
   const [data, setData] = useState([]);
+  const [pageSize, setPageSize] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -42,6 +44,10 @@ export const useMovies = () => {
   return {
     data,
     setData,
+    pageSize,
+    setPageSize,
+    currentPage,
+    setCurrentPage,
     loading,
     setLoading,
     error,
