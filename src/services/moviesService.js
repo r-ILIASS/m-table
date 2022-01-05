@@ -25,6 +25,18 @@ export function saveMovie(movie) {
   return http.post(apiEndpoint, movie);
 }
 
+export function toggleLike(movie) {
+  if (movie._id) {
+    const body = { ...movie };
+    body.genreId = movie.genre._id;
+    body.isLiked = !body.isLiked;
+    delete body._id;
+    delete body.genre;
+    delete body.__v;
+    return http.put(movieUrl(movie._id), body);
+  }
+}
+
 export function deleteMovie(movieId) {
   return http.delete(movieUrl(movieId));
 }

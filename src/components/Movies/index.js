@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getMovies, deleteMovie } from "../../services/moviesService";
+import {
+  getMovies,
+  deleteMovie,
+  toggleLike,
+} from "../../services/moviesService";
 
 import Nav from "../Nav";
 import Button from "../common/Button";
+
+import FullHeart from "../../assets/full-heart.svg";
+import EmptyHeart from "../../assets/empty-heart.svg";
 
 import { Wrapper, Content } from "./Movies.styles";
 
@@ -27,6 +34,15 @@ const Movies = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleLike = async (movie) => {
+    await toggleLike(movie);
+
+    const movies = [...data];
+    const index = movies.indexOf(movie);
+    movies[index].isLiked = !movies[index].isLiked;
+    setData(movies);
+  };
 
   const handleDelete = async (movie) => {
     await deleteMovie(movie._id);
@@ -60,6 +76,7 @@ const Movies = () => {
                     <th>Stock</th>
                     <th>Rate</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -69,6 +86,15 @@ const Movies = () => {
                       <td>{movie.genre.name}</td>
                       <td>{movie.numberInStock}</td>
                       <td>{movie.dailyRentalRate}</td>
+                      <td>
+                        <span onClick={() => handleLike(movie)}>
+                          {movie.isLiked ? (
+                            <img src={FullHeart} alt="liked" />
+                          ) : (
+                            <img src={EmptyHeart} alt="liked" />
+                          )}
+                        </span>
+                      </td>
                       <td>
                         <Button
                           label="Delete"
