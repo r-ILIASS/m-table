@@ -18,10 +18,14 @@ const Movies = () => {
       <Wrapper>
         <Content>
           {data.length === 0 ? (
-            <h1>There is no data to show</h1>
+            !loading && <p>There are no movies in the database</p>
           ) : (
             <>
-              <p>{`There are ${data.length} movies in the database`}</p>
+              <p>
+                {data.length === 1
+                  ? `There is one movie in the database`
+                  : `There are ${data.length} movies in the database`}
+              </p>
               <table>
                 <thead>
                   <tr>
