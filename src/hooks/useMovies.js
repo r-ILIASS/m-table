@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 
 import { getMovies, deleteMovie, toggleLike } from "../services/moviesService";
+import { getGenres } from "../services/genresService";
 
 export const useMovies = () => {
   const [data, setData] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,9 @@ export const useMovies = () => {
       setLoading(true);
 
       const { data: movies } = await getMovies();
+      const { data: genres } = await getGenres();
       setData(movies);
+      setGenres(genres);
     } catch (error) {
       setError(true);
     }
@@ -45,9 +49,14 @@ export const useMovies = () => {
     setCurrentPage(page);
   };
 
+  const handleGenreSelect = (genre) => {
+    console.log("selected genre: ", genre);
+  };
+
   return {
     data,
     setData,
+    genres,
     pageSize,
     setPageSize,
     currentPage,
@@ -59,5 +68,6 @@ export const useMovies = () => {
     handleLike,
     handleDelete,
     handlePageChange,
+    handleGenreSelect,
   };
 };

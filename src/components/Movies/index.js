@@ -8,6 +8,7 @@ import Nav from "../Nav";
 import Like from "../common/Like";
 import Button from "../common/Button";
 import Spinner from "../common/Spinner";
+import ListGroup from "../common/ListGroup";
 import Pagination from "../common/Pagination";
 // Styles
 import { Wrapper, Content } from "./Movies.styles";
@@ -15,12 +16,14 @@ import { Wrapper, Content } from "./Movies.styles";
 const Movies = () => {
   const {
     data,
+    genres,
     pageSize,
     currentPage,
     loading,
     handleLike,
     handleDelete,
     handlePageChange,
+    handleGenreSelect,
   } = useMovies();
 
   // Pagination logic
@@ -31,6 +34,12 @@ const Movies = () => {
       <Nav />
       <Wrapper>
         <Content>
+          <ListGroup
+            textProperty="name"
+            valueProperty="_id"
+            items={genres}
+            onItemSelect={handleGenreSelect}
+          />
           {data.length === 0 ? (
             !loading && <p>There are no movies in the database</p>
           ) : (
