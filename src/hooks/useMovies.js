@@ -20,7 +20,7 @@ export const useMovies = () => {
       const { data: movies } = await getMovies();
       const { data: genres } = await getGenres();
       setData(movies);
-      setGenres(genres);
+      setGenres([{ name: "All Genres" }, ...genres]);
     } catch (error) {
       setError(true);
     }
@@ -51,6 +51,7 @@ export const useMovies = () => {
   };
 
   const handleGenreSelect = (genre) => {
+    setCurrentPage(1);
     setSelectedGenre(genre);
   };
 

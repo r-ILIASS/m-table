@@ -27,8 +27,13 @@ const Movies = () => {
     handleGenreSelect,
   } = useMovies();
 
+  // Filtering logic
+  const filtered =
+    selectedGenre && selectedGenre._id
+      ? data.filter((m) => m.genre._id === selectedGenre._id)
+      : data;
   // Pagination logic
-  const movies = paginate(currentPage, pageSize, data);
+  const movies = paginate(currentPage, pageSize, filtered);
 
   return (
     <>
@@ -48,7 +53,7 @@ const Movies = () => {
                 <p>
                   {data.length === 1
                     ? `There is one movie in the database`
-                    : `There are ${data.length} movies in the database`}
+                    : `There are ${filtered.length} movies in the database`}
                 </p>
                 <table>
                   <thead>
@@ -87,7 +92,7 @@ const Movies = () => {
                   </tbody>
                 </table>
                 <Pagination
-                  itemsCount={data.length}
+                  itemsCount={filtered.length}
                   pageSize={pageSize}
                   currentPage={currentPage}
                   onClick={handlePageChange}
