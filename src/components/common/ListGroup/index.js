@@ -12,4 +12,9 @@ const ListGroup = ({ items, textProperty, valueProperty, onItemSelect }) => {
   );
 };
 
+ListGroup.defaultProps = {
+  textProperty: "name",
+  valueProperty: "_id",
+};
+
 export default ListGroup;
