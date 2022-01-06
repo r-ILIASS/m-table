@@ -2,11 +2,13 @@ import React from "react";
 // Components
 import Like from "../common/Like";
 import Button from "../common/Button";
+// Styles
+import { Table, Thead, Tbody } from "./MoviesTable.styles";
 
 const MoviesTable = ({ movies, handleDelete, handleLike }) => {
   return (
-    <table>
-      <thead>
+    <Table>
+      <Thead>
         <tr>
           <th>Title</th>
           <th>Genre</th>
@@ -15,8 +17,8 @@ const MoviesTable = ({ movies, handleDelete, handleLike }) => {
           <th></th>
           <th></th>
         </tr>
-      </thead>
-      <tbody>
+      </Thead>
+      <Tbody>
         {movies.map((movie) => (
           <tr key={movie._id}>
             <td>{movie.title}</td>
@@ -36,8 +38,8 @@ const MoviesTable = ({ movies, handleDelete, handleLike }) => {
             </td>
           </tr>
         ))}
-      </tbody>
-    </table>
+      </Tbody>
+    </Table>
   );
 };
 

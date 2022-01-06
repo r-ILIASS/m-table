@@ -39,11 +39,13 @@ const Movies = () => {
       <Nav />
       <Wrapper>
         <Content>
-          <ListGroup
-            items={genres}
-            selectedItem={selectedGenre}
-            onItemSelect={handleGenreSelect}
-          />
+          <div>
+            <ListGroup
+              items={genres}
+              selectedItem={selectedGenre}
+              onItemSelect={handleGenreSelect}
+            />
+          </div>
           {data.length === 0 ? (
             !loading && <p>There are no movies in the database</p>
           ) : (

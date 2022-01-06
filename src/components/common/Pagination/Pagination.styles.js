@@ -9,13 +9,13 @@ export const Wrapper = styled.div`
 export const Button = styled.a`
   display: flex;
   color: var(--nav);
-  font-size: 18px;
+  font-size: 0.8rem;
 
   .active {
     color: #fff;
     background: var(--blue);
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -25,8 +25,8 @@ export const Button = styled.a`
 
   .inactive {
     background: var(--white);
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     box-shadow: 0 0 0 1px var(--nav) inset;
     display: flex;

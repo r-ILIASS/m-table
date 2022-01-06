@@ -26,7 +26,7 @@ export const Wrapper = styled.button`
 
   cursor: pointer;
 
-  font-size: ${({ size }) => (size === "small" ? "14px" : "20px")};
+  font-size: ${({ size }) => (size === "small" ? "12px" : "20px")};
   font-weight: 500;
 
   @media screen and (max-width: 768px) {
