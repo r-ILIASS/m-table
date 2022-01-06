@@ -17,15 +17,11 @@ const Movies = () => {
     data,
     pageSize,
     currentPage,
-    setCurrentPage,
     loading,
     handleLike,
     handleDelete,
+    handlePageChange,
   } = useMovies();
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
 
   // Pagination logic
   const movies = paginate(currentPage, pageSize, data);
@@ -87,9 +83,6 @@ const Movies = () => {
           )}
         </Content>
       </Wrapper>
-      <br />
-      <br />
-      <br />
       {loading && <Spinner />}
     </>
   );

@@ -41,6 +41,10 @@ export const useMovies = () => {
     setData(newData);
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return {
     data,
     setData,
@@ -54,5 +58,6 @@ export const useMovies = () => {
     setError,
     handleLike,
     handleDelete,
+    handlePageChange,
   };
 };
