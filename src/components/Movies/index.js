@@ -5,11 +5,10 @@ import { useMovies } from "../../hooks/useMovies";
 import { paginate } from "../../utils/paginate";
 // Components
 import Nav from "../Nav";
-import Like from "../common/Like";
-import Button from "../common/Button";
 import Spinner from "../common/Spinner";
 import ListGroup from "../common/ListGroup";
 import Pagination from "../common/Pagination";
+import MoviesTable from "../MoviesTable";
 // Styles
 import { Wrapper, Content } from "./Movies.styles";
 
@@ -55,42 +54,11 @@ const Movies = () => {
                     ? `There is one movie in the database`
                     : `There are ${filtered.length} movies in the database`}
                 </p>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Genre</th>
-                      <th>Stock</th>
-                      <th>Rate</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {movies.map((movie) => (
-                      <tr key={movie._id}>
-                        <td>{movie.title}</td>
-                        <td>{movie.genre.name}</td>
-                        <td>{movie.numberInStock}</td>
-                        <td>{movie.dailyRentalRate}</td>
-                        <td>
-                          <Like
-                            data={movie}
-                            onClick={() => handleLike(movie)}
-                          />
-                        </td>
-                        <td>
-                          <Button
-                            label="Delete"
-                            variant="red"
-                            size="small"
-                            onClick={() => handleDelete(movie)}
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <MoviesTable
+                  movies={movies}
+                  handleDelete={handleDelete}
+                  handleLike={handleLike}
+                />
                 <Pagination
                   itemsCount={filtered.length}
                   pageSize={pageSize}
