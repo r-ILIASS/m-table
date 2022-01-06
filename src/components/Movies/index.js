@@ -1,6 +1,8 @@
 import React from "react";
 // Hooks
 import { useMovies } from "../../hooks/useMovies";
+// Utils
+import { paginate } from "../../utils/paginate";
 // Components
 import Nav from "../Nav";
 import Like from "../common/Like";
@@ -24,6 +26,10 @@ const Movies = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+  // Pagination logic
+  const movies = paginate(currentPage, pageSize, data);
+  console.log(movies);
 
   return (
     <>
@@ -51,7 +57,7 @@ const Movies = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((movie) => (
+                  {movies.map((movie) => (
                     <tr key={movie._id}>
                       <td>{movie.title}</td>
                       <td>{movie.genre.name}</td>
