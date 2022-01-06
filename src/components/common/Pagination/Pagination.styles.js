@@ -23,7 +23,7 @@ export const Button = styled.a`
     cursor: pointer;
   }
 
-  .innactive {
+  .inactive {
     background: var(--white);
     width: 36px;
     height: 36px;

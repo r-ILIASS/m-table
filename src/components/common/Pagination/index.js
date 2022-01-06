@@ -13,7 +13,7 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onClick }) => {
     <Wrapper>
       {pages.map((page) => (
         <Button key={page} onClick={() => onClick(page)}>
-          <span className={page === currentPage ? "active" : "innactive"}>
+          <span className={page === currentPage ? "active" : "inactive"}>
             {page}
           </span>
         </Button>

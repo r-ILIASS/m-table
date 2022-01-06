@@ -1,12 +1,24 @@
 import React from "react";
+// Styles
+import { Wrapper } from "./ListGroup.styles";
 
-import { Wrapper, Item } from "./ListGroup.styles";
-
-const ListGroup = ({ items, textProperty, valueProperty, onItemSelect }) => {
+const ListGroup = ({
+  items,
+  selectedItem,
+  textProperty,
+  valueProperty,
+  onItemSelect,
+}) => {
   return (
     <Wrapper>
       {items.map((item) => (
-        <Item key={item[valueProperty]}>{item[textProperty]}</Item>
+        <li
+          className={selectedItem.name === item.name ? "active" : "inactive"}
+          onClick={() => onItemSelect(item)}
+          key={item[valueProperty]}
+        >
+          {item[textProperty]}
+        </li>
       ))}
     </Wrapper>
   );

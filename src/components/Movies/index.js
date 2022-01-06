@@ -17,6 +17,7 @@ const Movies = () => {
   const {
     data,
     genres,
+    selectedGenre,
     pageSize,
     currentPage,
     loading,
@@ -34,55 +35,64 @@ const Movies = () => {
       <Nav />
       <Wrapper>
         <Content>
-          <ListGroup items={genres} onItemSelect={handleGenreSelect} />
+          <ListGroup
+            items={genres}
+            selectedItem={selectedGenre}
+            onItemSelect={handleGenreSelect}
+          />
           {data.length === 0 ? (
             !loading && <p>There are no movies in the database</p>
           ) : (
             <>
-              <p>
-                {data.length === 1
-                  ? `There is one movie in the database`
-                  : `There are ${data.length} movies in the database`}
-              </p>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Stock</th>
-                    <th>Rate</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {movies.map((movie) => (
-                    <tr key={movie._id}>
-                      <td>{movie.title}</td>
-                      <td>{movie.genre.name}</td>
-                      <td>{movie.numberInStock}</td>
-                      <td>{movie.dailyRentalRate}</td>
-                      <td>
-                        <Like data={movie} onClick={() => handleLike(movie)} />
-                      </td>
-                      <td>
-                        <Button
-                          label="Delete"
-                          variant="red"
-                          size="small"
-                          onClick={() => handleDelete(movie)}
-                        />
-                      </td>
+              <div className="table">
+                <p>
+                  {data.length === 1
+                    ? `There is one movie in the database`
+                    : `There are ${data.length} movies in the database`}
+                </p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Genre</th>
+                      <th>Stock</th>
+                      <th>Rate</th>
+                      <th></th>
+                      <th></th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-              <Pagination
-                itemsCount={data.length}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                onClick={handlePageChange}
-              />
+                  </thead>
+                  <tbody>
+                    {movies.map((movie) => (
+                      <tr key={movie._id}>
+                        <td>{movie.title}</td>
+                        <td>{movie.genre.name}</td>
+                        <td>{movie.numberInStock}</td>
+                        <td>{movie.dailyRentalRate}</td>
+                        <td>
+                          <Like
+                            data={movie}
+                            onClick={() => handleLike(movie)}
+                          />
+                        </td>
+                        <td>
+                          <Button
+                            label="Delete"
+                            variant="red"
+                            size="small"
+                            onClick={() => handleDelete(movie)}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <Pagination
+                  itemsCount={data.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  onClick={handlePageChange}
+                />
+              </div>
             </>
           )}
         </Content>

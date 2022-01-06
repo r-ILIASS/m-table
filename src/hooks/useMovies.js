@@ -6,6 +6,7 @@ import { getGenres } from "../services/genresService";
 export const useMovies = () => {
   const [data, setData] = useState([]);
   const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState({});
   const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -50,13 +51,14 @@ export const useMovies = () => {
   };
 
   const handleGenreSelect = (genre) => {
-    console.log("selected genre: ", genre);
+    setSelectedGenre(genre);
   };
 
   return {
     data,
     setData,
     genres,
+    selectedGenre,
     pageSize,
     setPageSize,
     currentPage,
