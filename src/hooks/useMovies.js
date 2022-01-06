@@ -9,6 +9,7 @@ export const useMovies = () => {
   const [selectedGenre, setSelectedGenre] = useState({});
   const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortColumn, setSortColumn] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -20,7 +21,7 @@ export const useMovies = () => {
       const { data: movies } = await getMovies();
       const { data: genres } = await getGenres();
       setData(movies);
-      setGenres([{ name: "All Genres" }, ...genres]);
+      setGenres([{ _id: "", name: "All Genres" }, ...genres]);
     } catch (error) {
       setError(true);
     }
@@ -55,11 +56,16 @@ export const useMovies = () => {
     setSelectedGenre(genre);
   };
 
+  const handleSort = (sortColumnObject) => {
+    setSortColumn(sortColumnObject);
+  };
+
   return {
     data,
     setData,
     genres,
     selectedGenre,
+    sortColumn,
     pageSize,
     setPageSize,
     currentPage,
@@ -72,5 +78,6 @@ export const useMovies = () => {
     handleDelete,
     handlePageChange,
     handleGenreSelect,
+    handleSort,
   };
 };

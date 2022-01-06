@@ -5,15 +5,30 @@ import Button from "../common/Button";
 // Styles
 import { Table, Thead, Tbody } from "./MoviesTable.styles";
 
-const MoviesTable = ({ movies, handleDelete, handleLike }) => {
+const MoviesTable = ({
+  movies,
+  handleDelete,
+  handleLike,
+  handleSort,
+  sortColumn,
+}) => {
+  const raiseSort = (path) => {
+    let order = "asc";
+    if (sortColumn.path === path) {
+      order = sortColumn.order === "asc" ? "desc" : "asc";
+    }
+
+    handleSort({ path, order });
+  };
+
   return (
     <Table>
       <Thead>
         <tr>
-          <th>Title</th>
-          <th>Genre</th>
-          <th>Stock</th>
-          <th>Rate</th>
+          <th onClick={() => raiseSort("title")}>Title</th>
+          <th onClick={() => raiseSort("genre.name")}>Genre</th>
+          <th onClick={() => raiseSort("numberInStock")}>Stock</th>
+          <th onClick={() => raiseSort("dailyRentalRate")}>Rate</th>
           <th></th>
           <th></th>
         </tr>

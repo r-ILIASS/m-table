@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 // Hooks
 import { useMovies } from "../../hooks/useMovies";
 // Utils
@@ -17,6 +18,7 @@ const Movies = () => {
     data,
     genres,
     selectedGenre,
+    sortColumn,
     pageSize,
     currentPage,
     loading,
@@ -24,15 +26,20 @@ const Movies = () => {
     handleDelete,
     handlePageChange,
     handleGenreSelect,
+    handleSort,
   } = useMovies();
+
+  console.log(sortColumn);
 
   // Filtering logic
   const filtered =
     selectedGenre && selectedGenre._id
       ? data.filter((m) => m.genre._id === selectedGenre._id)
       : data;
+  // Sorting logic
+  const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
   // Pagination logic
-  const movies = paginate(currentPage, pageSize, filtered);
+  const movies = paginate(currentPage, pageSize, sorted);
 
   return (
     <>
@@ -60,6 +67,8 @@ const Movies = () => {
                   movies={movies}
                   handleDelete={handleDelete}
                   handleLike={handleLike}
+                  handleSort={handleSort}
+                  sortColumn={sortColumn}
                 />
                 <Pagination
                   itemsCount={filtered.length}

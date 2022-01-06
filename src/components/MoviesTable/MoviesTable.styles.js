@@ -13,6 +13,10 @@ export const Table = styled.table`
     padding: 12px 10px;
     text-align: left;
     border-bottom: var(--border);
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
   td {
