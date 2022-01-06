@@ -29,7 +29,6 @@ const Movies = () => {
 
   // Pagination logic
   const movies = paginate(currentPage, pageSize, data);
-  console.log(movies);
 
   return (
     <>

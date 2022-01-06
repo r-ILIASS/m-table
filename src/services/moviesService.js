@@ -1,6 +1,5 @@
-import http from "./httpService";
+import http, { apiUrl } from "./httpService";
 
-const apiUrl = "http://localhost:4000/api";
 const apiEndpoint = apiUrl + "/movies";
 
 function movieUrl(id) {
