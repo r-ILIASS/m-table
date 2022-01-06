@@ -1,6 +1,7 @@
-import React, { useState } from "react";
 import _ from "lodash";
-
+import React from "react";
+import PropTypes from "prop-types";
+// Styles
 import { Wrapper, Button } from "./Pagination.styles";
 
 const Pagination = ({ itemsCount, pageSize, currentPage, onClick }) => {
@@ -19,6 +20,13 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onClick }) => {
       ))}
     </Wrapper>
   );
+};
+
+Pagination.propTypes = {
+  itemsCount: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Pagination;

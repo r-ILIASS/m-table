@@ -1,4 +1,5 @@
 import React from "react";
+// Assets
 import FullHeart from "../../../assets/full-heart.svg";
 import EmptyHeart from "../../../assets/empty-heart.svg";
 
