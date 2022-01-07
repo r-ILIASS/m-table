@@ -3,6 +3,7 @@ import React from "react";
 import Like from "../common/Like";
 import Button from "../common/Button";
 import TableHeader from "../common/TableHeader";
+import TableBody from "../common/TableBody";
 // Styles
 import { Table } from "./MoviesTable.styles";
 
@@ -18,8 +19,23 @@ const MoviesTable = ({
     { path: "genre.name", label: "Genre" },
     { path: "numberInStock", label: "Stock" },
     { path: "dailyRentalRate", label: "Rate" },
-    { key: "like" },
-    { key: "delete" },
+    {
+      key: "like",
+      content: (movie) => (
+        <Like data={movie} onClick={() => handleLike(movie)} />
+      ),
+    },
+    {
+      key: "delete",
+      content: (movie) => (
+        <Button
+          label="Delete"
+          variant="red"
+          size="small"
+          onClick={() => handleDelete(movie)}
+        />
+      ),
+    },
   ];
 
   return (
@@ -29,27 +45,7 @@ const MoviesTable = ({
         sortColumn={sortColumn}
         handleSort={handleSort}
       />
-      <tbody>
-        {movies.map((movie) => (
-          <tr key={movie._id}>
-            <td>{movie.title}</td>
-            <td>{movie.genre.name}</td>
-            <td>{movie.numberInStock}</td>
-            <td>{movie.dailyRentalRate}</td>
-            <td>
-              <Like data={movie} onClick={() => handleLike(movie)} />
-            </td>
-            <td>
-              <Button
-                label="Delete"
-                variant="red"
-                size="small"
-                onClick={() => handleDelete(movie)}
-              />
-            </td>
-          </tr>
-        ))}
-      </tbody>
+      <TableBody data={movies} columns={columns} />
     </Table>
   );
 };
