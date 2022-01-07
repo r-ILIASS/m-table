@@ -1,4 +1,7 @@
 import React from "react";
+// Assets
+import Up from "../../../assets/sort-up.svg";
+import Down from "../../../assets/sort-down.svg";
 
 const TableHeader = ({ columns, sortColumn, handleSort }) => {
   const raiseSort = (path) => {
@@ -10,6 +13,27 @@ const TableHeader = ({ columns, sortColumn, handleSort }) => {
     handleSort({ path, order });
   };
 
+  const renderSortIcon = (column) => {
+    if (column.path !== sortColumn.path || column.content) return null;
+
+    if (sortColumn.order === "asc")
+      return (
+        <img
+          style={{ width: "12px", height: "14px" }}
+          src={Up}
+          alt="chevron-up"
+        />
+      );
+
+    return (
+      <img
+        style={{ width: "12px", height: "14px" }}
+        src={Down}
+        alt="chevron-down"
+      />
+    );
+  };
+
   return (
     <thead>
       <tr>
@@ -18,7 +42,7 @@ const TableHeader = ({ columns, sortColumn, handleSort }) => {
             key={column.path || column.key}
             onClick={() => raiseSort(column.path)}
           >
-            {column.label}
+            {column.label} {renderSortIcon(column)}
           </th>
         ))}
       </tr>
