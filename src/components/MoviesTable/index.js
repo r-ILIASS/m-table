@@ -2,8 +2,9 @@ import React from "react";
 // Components
 import Like from "../common/Like";
 import Button from "../common/Button";
+import TableHeader from "../common/TableHeader";
 // Styles
-import { Table, Thead, Tbody } from "./MoviesTable.styles";
+import { Table } from "./MoviesTable.styles";
 
 const MoviesTable = ({
   movies,
@@ -12,28 +13,23 @@ const MoviesTable = ({
   handleSort,
   sortColumn,
 }) => {
-  const raiseSort = (path) => {
-    let order = "asc";
-    if (sortColumn.path === path) {
-      order = sortColumn.order === "asc" ? "desc" : "asc";
-    }
-
-    handleSort({ path, order });
-  };
+  const columns = [
+    { path: "title", label: "Title" },
+    { path: "genre.name", label: "Genre" },
+    { path: "numberInStock", label: "Stock" },
+    { path: "dailyRentalRate", label: "Rate" },
+    { key: "like" },
+    { key: "delete" },
+  ];
 
   return (
     <Table>
-      <Thead>
-        <tr>
-          <th onClick={() => raiseSort("title")}>Title</th>
-          <th onClick={() => raiseSort("genre.name")}>Genre</th>
-          <th onClick={() => raiseSort("numberInStock")}>Stock</th>
-          <th onClick={() => raiseSort("dailyRentalRate")}>Rate</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </Thead>
-      <Tbody>
+      <TableHeader
+        columns={columns}
+        sortColumn={sortColumn}
+        handleSort={handleSort}
+      />
+      <tbody>
         {movies.map((movie) => (
           <tr key={movie._id}>
             <td>{movie.title}</td>
@@ -53,7 +49,7 @@ const MoviesTable = ({
             </td>
           </tr>
         ))}
-      </Tbody>
+      </tbody>
     </Table>
   );
 };

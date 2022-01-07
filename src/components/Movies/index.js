@@ -29,8 +29,6 @@ const Movies = () => {
     handleSort,
   } = useMovies();
 
-  console.log(sortColumn);
-
   // Filtering logic
   const filtered =
     selectedGenre && selectedGenre._id
