@@ -1,4 +1,5 @@
 import React from "react";
+import Joi from "joi";
 // Hooks
 import useForm from "../../hooks/useForm";
 // Components
@@ -11,11 +12,21 @@ const LoginForm = () => {
     console.log("login submit ", values);
   };
 
+  const schema = Joi.object({
+    username: Joi.string()
+      .alphanum()
+      .min(3)
+      .max(30)
+      .label("Username")
+      .required(),
+    password: Joi.string().min(8).max(30).label("Password").required(),
+  });
+
   const {
     inputState: values,
     handleChange,
     handleSubmit,
-  } = useForm(loginSubmit);
+  } = useForm(loginSubmit, schema);
 
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ name, label, value, onChange, type }) => {
+const Input = ({ name, label, value, onChange, type, error }) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -11,6 +11,7 @@ const Input = ({ name, label, value, onChange, type }) => {
         id={name}
         name={name}
       />
+      {error && <p>{error}</p>}
     </div>
   );
 };
