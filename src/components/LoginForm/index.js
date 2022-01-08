@@ -24,6 +24,7 @@ const LoginForm = () => {
 
   const {
     inputState: values,
+    errors,
     handleChange,
     handleSubmit,
   } = useForm(loginSubmit, schema);
@@ -36,15 +37,17 @@ const LoginForm = () => {
           <Input
             name="username"
             label="Username"
-            value={values.name}
             onChange={handleChange}
+            value={values.name}
+            error={errors.username}
           />
           <Input
             name="password"
             label="Password"
-            value={values.name}
-            onChange={handleChange}
             type="password"
+            onChange={handleChange}
+            value={values.name}
+            error={errors.password}
           />
           <div className="btn__Container">
             <button type="submit">Login</button>

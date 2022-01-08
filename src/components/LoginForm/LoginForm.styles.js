@@ -74,6 +74,12 @@ export const Content = styled.div`
         padding: 10px;
         font-size: 1.125rem;
       }
+
+      p {
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: var(--red);
+      }
     }
 
     .btn__Container {

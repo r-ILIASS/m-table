@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const useForm = (submitCallBack, joiSchema) => {
   const [inputState, setInputState] = useState({});
@@ -16,8 +16,9 @@ const useForm = (submitCallBack, joiSchema) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const errorObj = validate();
-    setErrors(errorObj || null);
+    setErrors(errorObj || {});
     if (errorObj) return;
     // Call the server
     submitCallBack();
@@ -33,7 +34,7 @@ const useForm = (submitCallBack, joiSchema) => {
     }));
   };
 
-  return { inputState, handleChange, handleSubmit };
+  return { inputState, errors, handleChange, handleSubmit };
 };
 
 export default useForm;
