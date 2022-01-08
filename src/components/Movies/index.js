@@ -29,14 +29,14 @@ const Movies = () => {
     handleSort,
   } = useMovies();
 
-  // Filtering logic
+  // Filtering
   const filtered =
     selectedGenre && selectedGenre._id
       ? data.filter((m) => m.genre._id === selectedGenre._id)
       : data;
-  // Sorting logic
+  // Sorting
   const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-  // Pagination logic
+  // Pagination
   const movies = paginate(currentPage, pageSize, sorted);
 
   return (
@@ -51,32 +51,32 @@ const Movies = () => {
               onItemSelect={handleGenreSelect}
             />
           </div>
+          {/* ====== table start ====== */}
           {data.length === 0 ? (
             !loading && <p>There are no movies in the database</p>
           ) : (
-            <>
-              <div className="table">
-                <p>
-                  {data.length === 1
-                    ? `There is one movie in the database`
-                    : `There are ${filtered.length} movies in the database`}
-                </p>
-                <MoviesTable
-                  movies={movies}
-                  handleDelete={handleDelete}
-                  handleLike={handleLike}
-                  handleSort={handleSort}
-                  sortColumn={sortColumn}
-                />
-                <Pagination
-                  itemsCount={filtered.length}
-                  pageSize={pageSize}
-                  currentPage={currentPage}
-                  onClick={handlePageChange}
-                />
-              </div>
-            </>
+            <div>
+              <p>
+                {data.length === 1
+                  ? `There is one movie in the database`
+                  : `There are ${filtered.length} movies in the database`}
+              </p>
+              <MoviesTable
+                movies={movies}
+                handleDelete={handleDelete}
+                handleLike={handleLike}
+                handleSort={handleSort}
+                sortColumn={sortColumn}
+              />
+              <Pagination
+                itemsCount={filtered.length}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onClick={handlePageChange}
+              />
+            </div>
           )}
+          {/* ====== table end ====== */}
         </Content>
       </Wrapper>
       {loading && <Spinner />}

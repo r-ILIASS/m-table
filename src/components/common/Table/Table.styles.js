@@ -27,5 +27,14 @@ export const StyledTable = styled.table`
     padding: 6px 10px;
     text-align: left;
     border-bottom: var(--border);
+    word-wrap: break-word;
+
+    a {
+      color: var(--blue);
+    }
+
+    @media screen and (max-width: 768px) {
+      max-width: 200px;
+    }
   }
 `;

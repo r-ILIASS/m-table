@@ -14,7 +14,4 @@ export const Content = styled.div`
   p {
     margin-bottom: 20px;
   }
-
-  .table {
-  }
 `;

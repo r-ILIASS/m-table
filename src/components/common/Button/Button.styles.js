@@ -26,10 +26,13 @@ export const Wrapper = styled.button`
 
   cursor: pointer;
 
-  font-size: ${({ size }) => (size === "small" ? "12px" : "20px")};
+  font-size: ${({ size }) => (size === "small" ? "12px" : "16px")};
   font-weight: 500;
 
   @media screen and (max-width: 768px) {
     font-size: ${({ size }) => (size === "small" ? "12px" : "16px")};
+    font-weight: 400;
+    box-shadow: ${({ variant }) =>
+      variant === "empty" ? "0px 0px 0px 1px var(--blue) inset" : "none"};
   }
 `;

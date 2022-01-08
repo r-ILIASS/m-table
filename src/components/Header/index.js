@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // Components
 import Button from "../common/Button";
 // Styles
@@ -9,7 +10,9 @@ import Logo from "../../assets/logo.svg";
 const Header = () => (
   <Wrapper>
     <Content>
-      <img src={Logo} alt="movie-table" />
+      <Link to="/">
+        <img src={Logo} alt="movie-table" />
+      </Link>
       <div className="buttons">
         <Button
           variant="empty"
