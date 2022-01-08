@@ -5,20 +5,41 @@ import useForm from "../../hooks/useForm";
 import { Wrapper, Content } from "./LoginForm.styles";
 
 const LoginForm = () => {
-  const { handleSubmit } = useForm();
+  const loginSubmit = () => {
+    console.log("login submit ", values);
+  };
+
+  const {
+    inputState: values,
+    handleChange,
+    handleSubmit,
+  } = useForm(loginSubmit);
 
   return (
     <Wrapper>
       <Content>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={handleSubmit}>
           <h1>Login</h1>
           <div>
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" />
+            <input
+              value={values.name}
+              onChange={handleChange}
+              autoFocus
+              type="text"
+              id="username"
+              name="username"
+            />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" />
+            <input
+              value={values.name}
+              onChange={handleChange}
+              type="password"
+              id="password"
+              name="password"
+            />
           </div>
           <div className="btn__Container">
             <button type="submit">Login</button>

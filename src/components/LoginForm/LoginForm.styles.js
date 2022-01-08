@@ -37,7 +37,7 @@ export const Content = styled.div`
         opacity: 0;
       }
       to {
-        opacity: 1;
+        opacity: 0.6;
       }
     }
   }

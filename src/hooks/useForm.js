@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-const useForm = () => {
+const useForm = (submitCallBack) => {
+  const [inputState, setInputState] = useState({});
+
+  const handleChange = (e) => {
+    const name = e.currentTarget.name;
+    const value = e.currentTarget.value;
+
+    setInputState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Call form-specific custom submit;
-    console.log("submit");
+    // Call form-specific submitCallBack function;
+    submitCallBack();
   };
 
-  return { handleSubmit };
+  return { inputState, handleChange, handleSubmit };
 };
 
 export default useForm;
