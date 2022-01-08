@@ -15,16 +15,9 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  a {
-    height: 47px;
-
-    @media (max-width: 768px) {
-      height: 40px;
-    }
-  }
-
   img {
     width: 47px;
+    cursor: pointer;
 
     @media screen and (max-width: 768px) {
       width: 40px;
