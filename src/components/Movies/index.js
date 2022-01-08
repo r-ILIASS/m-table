@@ -44,14 +44,18 @@ const Movies = () => {
       <Nav />
       <Wrapper>
         <Content>
+          {/* ====== ListGroup start ====== */}
           <div>
-            <ListGroup
-              items={genres}
-              selectedItem={selectedGenre}
-              onItemSelect={handleGenreSelect}
-            />
+            {genres.length > 0 && (
+              <ListGroup
+                items={genres}
+                selectedItem={selectedGenre}
+                onItemSelect={handleGenreSelect}
+              />
+            )}
           </div>
-          {/* ====== table start ====== */}
+          {/* ====== ListGroup end ====== */}
+          {/* ====== MoviesTable start ====== */}
           {data.length === 0 ? (
             !loading && <p>There are no movies in the database</p>
           ) : (
@@ -76,7 +80,7 @@ const Movies = () => {
               />
             </div>
           )}
-          {/* ====== table end ====== */}
+          {/* ====== MoviesTable end ====== */}
         </Content>
       </Wrapper>
       {loading && <Spinner />}

@@ -78,6 +78,16 @@ export const Content = styled.div`
 
     .btn__Container {
       margin-top: 30px;
+
+      button {
+        padding: 5px 12px;
+        background: var(--blue);
+        border-radius: 7px;
+        color: #fff;
+        font-size: 1.125rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
     }
   }
 `;

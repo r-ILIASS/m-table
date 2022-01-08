@@ -1,14 +1,16 @@
 import React from "react";
-// Components
-import Button from "../common/Button";
+// Hooks
+import useForm from "../../hooks/useForm";
 // Styles
 import { Wrapper, Content } from "./LoginForm.styles";
 
 const LoginForm = () => {
+  const { handleSubmit } = useForm();
+
   return (
     <Wrapper>
       <Content>
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <h1>Login</h1>
           <div>
             <label htmlFor="username">Username</label>
@@ -19,8 +21,7 @@ const LoginForm = () => {
             <input type="password" id="password" />
           </div>
           <div className="btn__Container">
-            <Button label="Login" variant="blue" />
-            <Button label="Demo" variant="red" />
+            <button type="submit">Login</button>
           </div>
         </form>
       </Content>
