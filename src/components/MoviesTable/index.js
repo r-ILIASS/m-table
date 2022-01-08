@@ -1,11 +1,8 @@
 import React from "react";
 // Components
+import Table from "../common/Table"; /////////////////////
 import Like from "../common/Like";
 import Button from "../common/Button";
-import TableHeader from "../common/TableHeader";
-import TableBody from "../common/TableBody";
-// Styles
-import { Table } from "./MoviesTable.styles";
 
 const MoviesTable = ({
   movies,
@@ -39,14 +36,12 @@ const MoviesTable = ({
   ];
 
   return (
-    <Table>
-      <TableHeader
-        columns={columns}
-        sortColumn={sortColumn}
-        handleSort={handleSort}
-      />
-      <TableBody data={movies} columns={columns} />
-    </Table>
+    <Table
+      data={movies}
+      columns={columns}
+      sortColumn={sortColumn}
+      handleSort={handleSort}
+    />
   );
 };
 

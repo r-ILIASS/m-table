@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Table = styled.table`
+export const StyledTable = styled.table`
   background: var(--white);
   border: var(--border);
   min-width: 468px;
