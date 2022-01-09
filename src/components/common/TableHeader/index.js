@@ -14,7 +14,11 @@ const TableHeader = ({ columns, sortColumn, handleSort }) => {
   };
 
   const renderSortIcon = (column) => {
-    if (column.path !== sortColumn.path || column.content) return null;
+    if (
+      column.path !== sortColumn.path ||
+      (column.content && column.path !== "title")
+    )
+      return null;
 
     if (sortColumn.order === "asc")
       return (
