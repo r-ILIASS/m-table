@@ -23,7 +23,7 @@ const Header = () => {
           <Button
             variant="blue"
             label="Register"
-            onClick={() => console.log("register")}
+            onClick={() => navigate("/register")}
           />
         </div>
       </Content>

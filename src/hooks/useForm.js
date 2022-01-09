@@ -41,7 +41,7 @@ const useForm = (submitCallBack, joiSchema) => {
       name={name}
       label={label}
       onChange={handleChange}
-      value={inputState.name}
+      value={inputState[name] || ""}
       error={errors[name]}
       type={type}
     />

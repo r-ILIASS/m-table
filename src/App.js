@@ -8,12 +8,14 @@ import Customers from "./components/Customers";
 import Rentals from "./components/Rentals";
 import NotFound from "./components/NotFound";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
+        <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/movies/:id" element={<MovieForm />} />
         <Route path="/movies" element={<Movies />} />
