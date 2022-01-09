@@ -1,5 +1,6 @@
-import React from "react";
 import _ from "lodash";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 // Hooks
 import { useMovies } from "../../hooks/useMovies";
 // Utils
@@ -7,11 +8,12 @@ import { paginate } from "../../utils/paginate";
 // Components
 import Nav from "../Nav";
 import Spinner from "../common/Spinner";
+import Button from "../common/Button";
 import ListGroup from "../common/ListGroup";
 import Pagination from "../common/Pagination";
 import MoviesTable from "../MoviesTable";
 // Styles
-import { Wrapper, Content } from "./Movies.styles";
+import { Wrapper, Content, Hflex } from "./Movies.styles";
 
 const Movies = () => {
   const {
@@ -28,6 +30,8 @@ const Movies = () => {
     handleGenreSelect,
     handleSort,
   } = useMovies();
+
+  const navigate = useNavigate();
 
   // Filtering
   const filtered =
@@ -57,14 +61,30 @@ const Movies = () => {
           {/* ====== ListGroup end ====== */}
           {/* ====== MoviesTable start ====== */}
           {data.length === 0 ? (
-            !loading && <p>There are no movies in the database</p>
+            !loading && (
+              <Hflex>
+                <p>There are no movies in the database</p>
+                <Button
+                  onClick={() => navigate("/movies/new")}
+                  label="+"
+                  variant="blue"
+                />
+              </Hflex>
+            )
           ) : (
             <div>
-              <p>
-                {data.length === 1
-                  ? `There is one movie in the database`
-                  : `There are ${filtered.length} movies in the database`}
-              </p>
+              <Hflex>
+                <p>
+                  {data.length === 1
+                    ? `There is one movie in the database`
+                    : `There are ${filtered.length} movies in the database`}
+                </p>
+                <Button
+                  onClick={() => navigate("/movies/new")}
+                  label="+"
+                  variant="blue"
+                />
+              </Hflex>
               <MoviesTable
                 movies={movies}
                 handleDelete={handleDelete}

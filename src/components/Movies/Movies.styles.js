@@ -10,8 +10,11 @@ export const Content = styled.div`
   padding: 20px 0;
   display: flex;
   gap: 64px;
+`;
 
-  p {
-    margin-bottom: 20px;
-  }
+export const Hflex = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 `;
