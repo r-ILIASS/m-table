@@ -48,7 +48,7 @@ const useForm = (submitCallBack, joiSchema) => {
   );
 
   const renderButton = (label) => {
-    return <button type="submit">Login</button>;
+    return <button type="submit">{label}</button>;
   };
 
   return {

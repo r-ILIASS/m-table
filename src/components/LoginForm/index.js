@@ -11,12 +11,7 @@ const LoginForm = () => {
   };
 
   const schema = Joi.object({
-    username: Joi.string()
-      .alphanum()
-      .min(3)
-      .max(30)
-      .label("Username")
-      .required(),
+    email: Joi.string().email({ tlds: false }).label("Email").required(),
     password: Joi.string().min(8).max(30).label("Password").required(),
   });
 
@@ -30,7 +25,7 @@ const LoginForm = () => {
       <Content>
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
-          {renderInput("username", "Username")}
+          {renderInput("email", "Email")}
           {renderInput("password", "Password", "password")}
           {renderButton("Login")}
         </form>
