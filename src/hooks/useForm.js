@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Input from "../components/common/Input";
+
 const useForm = (submitCallBack, joiSchema) => {
   const [inputState, setInputState] = useState({});
   const [errors, setErrors] = useState({});
@@ -34,7 +36,27 @@ const useForm = (submitCallBack, joiSchema) => {
     }));
   };
 
-  return { inputState, errors, handleChange, handleSubmit };
+  const renderInput = (name, label, type) => (
+    <Input
+      name={name}
+      label={label}
+      onChange={handleChange}
+      value={inputState.name}
+      error={errors[name]}
+      type={type}
+    />
+  );
+
+  const renderButton = (label) => {
+    return <button type="submit">Login</button>;
+  };
+
+  return {
+    inputState,
+    handleSubmit,
+    renderInput,
+    renderButton,
+  };
 };
 
 export default useForm;

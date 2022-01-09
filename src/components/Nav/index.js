@@ -7,7 +7,7 @@ import { Wrapper, Content } from "./Nav.styles";
 const Nav = () => (
   <Wrapper>
     <Content>
-      <NavLink to="/">
+      <NavLink to="/movies">
         <span>
           <svg
             className="active"
