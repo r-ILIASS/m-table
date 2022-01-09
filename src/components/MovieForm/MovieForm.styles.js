@@ -76,9 +76,15 @@ export const Content = styled.div`
 
       input {
         border: var(--border);
-        /* height: 43px; */
         padding: 10px;
         font-size: 1.125rem;
+      }
+
+      select {
+        border: var(--border);
+        padding: 10px;
+        font-size: 1.125rem;
+        background: var(--white);
       }
 
       p {

@@ -13,6 +13,7 @@ export const Content = styled.div`
 `;
 
 export const Hflex = styled.div`
+  max-width: 468px;
   display: flex;
   align-items: center;
   justify-content: space-between;

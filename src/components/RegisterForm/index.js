@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi";
 // Hooks
-import useForm from "../../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 // Styles
 import { Wrapper, Content } from "./RegisterForm.styles";
 

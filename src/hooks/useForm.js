@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 import Input from "../components/common/Input";
+import Select from "../components/common/Select";
 
-const useForm = (submitCallBack, joiSchema) => {
+export const useForm = (submitCallBack, joiSchema) => {
   const [inputState, setInputState] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -47,16 +48,29 @@ const useForm = (submitCallBack, joiSchema) => {
     />
   );
 
+  const renderSelect = (name, label, options) => {
+    return (
+      <Select
+        name={name}
+        value={inputState[name] || ""}
+        label={label}
+        options={options}
+        onChange={handleChange}
+        error={errors[name]}
+      />
+    );
+  };
+
   const renderButton = (label) => {
     return <button type="submit">{label}</button>;
   };
 
   return {
     inputState,
+    setInputState,
     handleSubmit,
     renderInput,
+    renderSelect,
     renderButton,
   };
 };
-
-export default useForm;
