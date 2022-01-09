@@ -5,6 +5,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useMovies } from "../../hooks/useMovies";
 import { useMovieForm } from "../../hooks/useMovieForm";
+// Services
+import { saveMovie } from "../../services/moviesService";
 // Components
 import Spinner from "../common/Spinner";
 // Styles
@@ -16,8 +18,12 @@ const MovieForm = () => {
   const navigate = useNavigate();
 
   // custom callback
-  const movieSubmit = () => {
-    console.log("movie submit ", inputState);
+  const movieSubmit = async () => {
+    try {
+      await saveMovie(inputState);
+    } catch (error) {
+      console.error(error);
+    }
     navigate("/movies");
   };
 
@@ -63,7 +69,6 @@ const MovieForm = () => {
               </h1>
             )}
             {renderInput("title", "Title")}
-            {renderInput("genreId", "Genre")}
             {renderSelect("genreId", "Genre", genres)}
             {renderInput("numberInStock", "Number In Stock")}
             {renderInput("dailyRentalRate", "Rate")}

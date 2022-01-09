@@ -21,7 +21,6 @@ export const useMovieForm = (id, navigate) => {
   const fetchMovie = useCallback(async () => {
     try {
       const { data } = await getMovie(id);
-      console.log(data);
       setMovie(mapToViewModel(data));
       setLoading(false);
     } catch (error) {
@@ -41,6 +40,7 @@ export const useMovieForm = (id, navigate) => {
   return {
     movie,
     loading,
+    setLoading,
     error,
   };
 };
