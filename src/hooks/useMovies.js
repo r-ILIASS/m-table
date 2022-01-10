@@ -35,11 +35,15 @@ export const useMovies = () => {
   }, []);
 
   const handleLike = async (movie) => {
-    const { data: res } = await toggleLike(movie);
-    if (res.isLiked) {
-      toast.success("Movie liked!");
-    } else if (!res.isLiked) {
-      toast.success("Movie unliked!");
+    try {
+      const { data: res } = await toggleLike(movie);
+      if (res.isLiked) {
+        toast.success("Movie liked!");
+      } else if (!res.isLiked) {
+        toast.success("Movie unliked!");
+      }
+    } catch (error) {
+      console.error(error);
     }
 
     const movies = [...data];
@@ -49,8 +53,13 @@ export const useMovies = () => {
   };
 
   const handleDelete = async (movie) => {
-    await deleteMovie(movie._id);
-    toast.error("Movie deleted!");
+    try {
+      await deleteMovie(movie._id);
+      toast.error("Movie deleted!");
+    } catch (error) {
+      console.error(error);
+    }
+
     const newData = data.filter((m) => m._id !== movie._id);
     setData(newData);
   };

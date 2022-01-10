@@ -2,12 +2,20 @@ import React from "react";
 import Joi from "joi";
 // Hooks
 import { useForm } from "../../hooks/useForm";
+// Services
+import { register } from "../../services/userService";
 // Styles
 import { Wrapper, Content } from "./RegisterForm.styles";
 
 const RegisterForm = () => {
-  const registerSubmit = () => {
-    console.log("register submit ", inputState);
+  const registerSubmit = async () => {
+    const res = await register(inputState);
+    if (res.data && res.status === 400) {
+      const errorObj = {
+        email: res.data,
+      };
+      setErrors(errorObj);
+    }
   };
 
   const schema = Joi.object({
@@ -16,10 +24,8 @@ const RegisterForm = () => {
     name: Joi.string().max(50).label("Name").required(),
   });
 
-  const { inputState, handleSubmit, renderInput, renderButton } = useForm(
-    registerSubmit,
-    schema
-  );
+  const { inputState, setErrors, handleSubmit, renderInput, renderButton } =
+    useForm(registerSubmit, schema);
 
   return (
     <Wrapper>

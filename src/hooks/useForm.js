@@ -67,6 +67,7 @@ export const useForm = (submitCallBack, joiSchema) => {
 
   return {
     inputState,
+    setErrors,
     setInputState,
     handleSubmit,
     renderInput,
