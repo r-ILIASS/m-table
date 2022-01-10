@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as Sentry from "@sentry/react";
 import { toast } from "react-toastify";
 import config from "../config.json";
 
@@ -12,6 +13,7 @@ axios.interceptors.response.use(null, (error) => {
 
   if (!expected) {
     console.error(error);
+    Sentry.captureException(error);
     toast.error("An unexpected error occurred.", {
       autoClose: 5000,
     });
