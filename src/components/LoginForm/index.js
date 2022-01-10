@@ -2,23 +2,29 @@ import React from "react";
 import Joi from "joi";
 // Hooks
 import { useForm } from "../../hooks/useForm";
+// Services
+import { login } from "../../services/authService";
 // Styles
 import { Wrapper, Content } from "./LoginForm.styles";
 
 const LoginForm = () => {
-  const loginSubmit = () => {
-    console.log("login submit ", inputState);
+  const loginSubmit = async () => {
+    const res = await login(inputState);
+    if (res.data && res.status === 400) {
+      const errorObj = {
+        email: res.data,
+      };
+      setErrors(errorObj);
+    }
   };
 
   const schema = Joi.object({
     email: Joi.string().email({ tlds: false }).label("Email").required(),
-    password: Joi.string().min(8).max(30).label("Password").required(),
+    password: Joi.string().min(5).max(30).label("Password").required(),
   });
 
-  const { inputState, handleSubmit, renderInput, renderButton } = useForm(
-    loginSubmit,
-    schema
-  );
+  const { inputState, setErrors, handleSubmit, renderInput, renderButton } =
+    useForm(loginSubmit, schema);
 
   return (
     <Wrapper>
