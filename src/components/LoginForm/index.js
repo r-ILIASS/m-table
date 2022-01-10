@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Joi from "joi";
 // Hooks
 import { useForm } from "../../hooks/useForm";
@@ -8,9 +9,16 @@ import { login } from "../../services/authService";
 import { Wrapper, Content } from "./LoginForm.styles";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const loginSubmit = async () => {
     const res = await login(inputState);
-    if (res.data && res.status === 400) {
+
+    if (res.data && res.status === 200) {
+      const jwt = res.data;
+      localStorage.setItem("jwt", jwt);
+      navigate("/movies", { replace: true });
+    } else if (res.data && res.status === 400) {
       const errorObj = {
         email: res.data,
       };

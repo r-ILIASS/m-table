@@ -1,6 +1,8 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route, Navigate } from "react-router-dom";
+// Hook
+import { useApp } from "./hooks/useApp";
 // Components
 import Header from "./components/Header";
 import Movies from "./components/Movies";
@@ -15,6 +17,8 @@ import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 
 function App() {
+  const [user] = useApp();
+  console.log("user ", user);
   return (
     <>
       <Header />

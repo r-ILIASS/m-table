@@ -9,3 +9,7 @@ export function register(user) {
     },
   });
 }
+
+export function getUser(token) {
+  return http.get(`${apiEndpoint}/me`, { headers: { "x-auth-token": token } });
+}
