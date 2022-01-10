@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import { Routes, Route, Navigate } from "react-router-dom";
 // Components
 import Header from "./components/Header";
@@ -6,9 +7,12 @@ import Movies from "./components/Movies";
 import MovieForm from "./components/MovieForm";
 import Customers from "./components/Customers";
 import Rentals from "./components/Rentals";
+import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./components/NotFound";
-import LoginForm from "./components/LoginForm";
+import "react-toastify/dist/ReactToastify.css";
 import RegisterForm from "./components/RegisterForm";
+// Css
+import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
@@ -24,6 +28,7 @@ function App() {
         <Route path="/" element={<Navigate to="/movies" replace={true} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer autoClose={1000} pauseOnHover />
     </>
   );
 }

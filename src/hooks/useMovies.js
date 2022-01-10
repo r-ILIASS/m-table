@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { getMovies, deleteMovie, toggleLike } from "../services/moviesService";
 import { getGenres } from "../services/genresService";
@@ -34,7 +35,12 @@ export const useMovies = () => {
   }, []);
 
   const handleLike = async (movie) => {
-    await toggleLike(movie);
+    const { data: res } = await toggleLike(movie);
+    if (res.isLiked) {
+      toast.success("Movie liked!");
+    } else if (!res.isLiked) {
+      toast.success("Movie unliked!");
+    }
 
     const movies = [...data];
     const index = movies.indexOf(movie);
@@ -44,6 +50,7 @@ export const useMovies = () => {
 
   const handleDelete = async (movie) => {
     await deleteMovie(movie._id);
+    toast.error("Movie deleted!");
     const newData = data.filter((m) => m._id !== movie._id);
     setData(newData);
   };
