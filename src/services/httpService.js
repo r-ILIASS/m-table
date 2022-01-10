@@ -1,7 +1,8 @@
 import axios from "axios";
-import * as Sentry from "@sentry/react";
 import { toast } from "react-toastify";
 import config from "../config.json";
+
+import logger from "../services/loggingService";
 
 export const apiUrl = config.apiEndpoint;
 
@@ -13,7 +14,7 @@ axios.interceptors.response.use(null, (error) => {
 
   if (!expected) {
     console.error(error);
-    Sentry.captureException(error);
+    logger.log(error);
     toast.error("An unexpected error occurred.", {
       autoClose: 5000,
     });
