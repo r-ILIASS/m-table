@@ -10,7 +10,7 @@ const SearchField = ({ value, onChange }) => (
       name="query"
       placeholder="Search..."
       value={value}
-      onChange={onChange}
+      onChange={(e) => onChange(e.currentTarget.value)}
     />
     <img src={SearchIcon} alt="search-icon" />
   </Wrapper>

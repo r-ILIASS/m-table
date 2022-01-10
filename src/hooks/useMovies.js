@@ -7,6 +7,7 @@ export const useMovies = () => {
   const [data, setData] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
   const [pageSize, setPageSize] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortColumn, setSortColumn] = useState({});
@@ -52,6 +53,7 @@ export const useMovies = () => {
   };
 
   const handleGenreSelect = (genre) => {
+    setSearchQuery("");
     setCurrentPage(1);
     setSelectedGenre(genre);
   };
@@ -60,12 +62,19 @@ export const useMovies = () => {
     setSortColumn(sortColumnObject);
   };
 
+  const handleSearch = (query) => {
+    setSelectedGenre({});
+    setCurrentPage(1);
+    setSearchQuery(query);
+  };
+
   return {
     data,
     setData,
     genres,
     selectedGenre,
     sortColumn,
+    searchQuery,
     pageSize,
     setPageSize,
     currentPage,
@@ -79,5 +88,6 @@ export const useMovies = () => {
     handlePageChange,
     handleGenreSelect,
     handleSort,
+    handleSearch,
   };
 };

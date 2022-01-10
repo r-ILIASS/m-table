@@ -22,6 +22,7 @@ const Movies = () => {
     genres,
     selectedGenre,
     sortColumn,
+    searchQuery,
     pageSize,
     currentPage,
     loading,
@@ -30,15 +31,20 @@ const Movies = () => {
     handlePageChange,
     handleGenreSelect,
     handleSort,
+    handleSearch,
   } = useMovies();
 
   const navigate = useNavigate();
 
   // Filtering
-  const filtered =
-    selectedGenre && selectedGenre._id
-      ? data.filter((m) => m.genre._id === selectedGenre._id)
-      : data;
+  let filtered = data;
+  if (searchQuery) {
+    filtered = data.filter((m) =>
+      m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+    );
+  } else if (selectedGenre && selectedGenre._id) {
+    filtered = data.filter((m) => m.genre._id === selectedGenre._id);
+  }
   // Sorting
   const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
   // Pagination
@@ -86,7 +92,7 @@ const Movies = () => {
                   variant="blue"
                 />
               </Hflex>
-              <SearchField />
+              <SearchField value={searchQuery} onChange={handleSearch} />
               <MoviesTable
                 movies={movies}
                 handleDelete={handleDelete}
