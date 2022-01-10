@@ -10,12 +10,16 @@ export const Content = styled.div`
   padding: 20px 0;
   display: flex;
   gap: 64px;
+
+  p {
+    font-size: 1.37rem;
+  }
 `;
 
 export const Hflex = styled.div`
-  max-width: 468px;
+  min-width: 468px;
+  max-height: 40px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 `;

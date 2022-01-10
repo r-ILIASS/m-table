@@ -9,6 +9,7 @@ import { paginate } from "../../utils/paginate";
 import Nav from "../Nav";
 import Spinner from "../common/Spinner";
 import Button from "../common/Button";
+import SearchField from "../common/SearchField";
 import ListGroup from "../common/ListGroup";
 import Pagination from "../common/Pagination";
 import MoviesTable from "../MoviesTable";
@@ -85,6 +86,7 @@ const Movies = () => {
                   variant="blue"
                 />
               </Hflex>
+              <SearchField />
               <MoviesTable
                 movies={movies}
                 handleDelete={handleDelete}

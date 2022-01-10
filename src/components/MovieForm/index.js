@@ -17,7 +17,7 @@ const MovieForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // custom callback
+  // Write to the DB
   const movieSubmit = async () => {
     try {
       await saveMovie(inputState);
