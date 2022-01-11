@@ -54,7 +54,7 @@ const MovieForm = () => {
 
   useEffect(() => {
     setInputState(movie);
-  }, [movie]);
+  }, [movie, setInputState]);
 
   return (
     <Wrapper>

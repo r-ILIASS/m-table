@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 // Services
 import { getMovie } from "../services/moviesService";
@@ -27,7 +27,7 @@ export const useMovieForm = (id, navigate) => {
       navigate("/notfound", { replace: true });
       console.error("error ", error);
     }
-  }, [loading]);
+  }, [id, navigate]);
 
   useEffect(() => {
     if (id === "new") {
@@ -42,5 +42,6 @@ export const useMovieForm = (id, navigate) => {
     loading,
     setLoading,
     error,
+    setError,
   };
 };
