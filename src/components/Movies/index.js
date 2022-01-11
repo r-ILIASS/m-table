@@ -13,6 +13,7 @@ import SearchField from "../common/SearchField";
 import ListGroup from "../common/ListGroup";
 import Pagination from "../common/Pagination";
 import MoviesTable from "../MoviesTable";
+import Flyer from "../common/Flyer";
 // Styles
 import { Wrapper, Content, Hflex } from "./Movies.styles";
 
@@ -79,34 +80,38 @@ const Movies = () => {
               </Hflex>
             )
           ) : (
-            <div>
-              <Hflex>
-                <p>
-                  {data.length === 1
-                    ? `There is one movie in the database`
-                    : `There are ${filtered.length} movies in the database`}
-                </p>
-                <Button
-                  onClick={() => navigate("/movies/new")}
-                  label="+"
-                  variant="blue"
+            <>
+              <div>
+                <Hflex>
+                  <p>
+                    {data.length === 1
+                      ? `There is one movie in the database`
+                      : `There are ${filtered.length} movies in the database`}
+                  </p>
+                  <Button
+                    onClick={() => navigate("/movies/new")}
+                    label="+"
+                    variant="blue"
+                  />
+                </Hflex>
+                <SearchField value={searchQuery} onChange={handleSearch} />
+                <MoviesTable
+                  movies={movies}
+                  handleDelete={handleDelete}
+                  handleLike={handleLike}
+                  handleSort={handleSort}
+                  sortColumn={sortColumn}
                 />
-              </Hflex>
-              <SearchField value={searchQuery} onChange={handleSearch} />
-              <MoviesTable
-                movies={movies}
-                handleDelete={handleDelete}
-                handleLike={handleLike}
-                handleSort={handleSort}
-                sortColumn={sortColumn}
-              />
-              <Pagination
-                itemsCount={filtered.length}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                onClick={handlePageChange}
-              />
-            </div>
+                <Pagination
+                  itemsCount={filtered.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  onClick={handlePageChange}
+                />
+              </div>
+              <div className="space"></div>
+              <Flyer />
+            </>
           )}
           {/* ====== MoviesTable end ====== */}
         </Content>

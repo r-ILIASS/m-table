@@ -14,6 +14,10 @@ export const Content = styled.div`
   p {
     font-size: 1.37rem;
   }
+
+  .space {
+    width: 24%;
+  }
 `;
 
 export const Hflex = styled.div`
