@@ -21,6 +21,8 @@ axios.interceptors.response.use(null, (error) => {
   }
 });
 
+axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("jwt");
+
 export default {
   get: axios.get,
   post: axios.post,

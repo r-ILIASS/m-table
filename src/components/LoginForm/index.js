@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Joi from "joi";
 // Hooks
 import { useForm } from "../../hooks/useForm";
@@ -9,8 +8,6 @@ import { login } from "../../services/authService";
 import { Wrapper, Content } from "./LoginForm.styles";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
-
   const loginSubmit = async () => {
     const res = await login(inputState);
 
