@@ -18,10 +18,10 @@ import LoginForm from "./components/LoginForm";
 
 function App() {
   const [user] = useApp();
-  console.log("user ", user);
+
   return (
     <>
-      <Header />
+      <Header user={user} />
       <Routes>
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />

@@ -17,7 +17,7 @@ const LoginForm = () => {
     if (res.data && res.status === 200) {
       const jwt = res.data;
       localStorage.setItem("jwt", jwt);
-      navigate("/movies", { replace: true });
+      window.location = "/";
     } else if (res.data && res.status === 400) {
       const errorObj = {
         email: res.data,
