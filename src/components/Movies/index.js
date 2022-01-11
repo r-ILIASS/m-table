@@ -14,8 +14,10 @@ import ListGroup from "../common/ListGroup";
 import Pagination from "../common/Pagination";
 import MoviesTable from "../MoviesTable";
 import Flyer from "../common/Flyer";
+// Assets
+import Illustration from "../../assets/react-illustration.svg";
 // Styles
-import { Wrapper, Content, Hflex } from "./Movies.styles";
+import { Wrapper, Content, Hflex, Svg } from "./Movies.styles";
 
 const Movies = () => {
   const {
@@ -57,7 +59,7 @@ const Movies = () => {
       <Wrapper>
         <Content>
           {/* ====== ListGroup start ====== */}
-          <div>
+          <div className="mt">
             {genres.length > 0 && (
               <ListGroup
                 items={genres}
@@ -109,7 +111,9 @@ const Movies = () => {
                   onClick={handlePageChange}
                 />
               </div>
-              <div className="space"></div>
+              <div className="space">
+                <Svg src={Illustration} />
+              </div>
               <Flyer />
             </>
           )}

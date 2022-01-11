@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   position: relative;
   padding: 30px 5px;
   width: 179px;
-  height: 279px;
+  height: 305px;
   background: url(${({ image }) => image});
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
     position: absolute;
     max-width: 103px;
     top: 50%;
+    right: 24%;
     transform: translateY(-50%);
   }
 

@@ -17,6 +17,16 @@ export const Content = styled.div`
 
   .space {
     width: 24%;
+    height: 297px;
+    display: flex;
+
+    @media screen and (max-width: 1054px) {
+      display: none;
+    }
+  }
+
+  .mt {
+    margin-top: 61px;
   }
 `;
 
@@ -26,4 +36,8 @@ export const Hflex = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+`;
+
+export const Svg = styled.img`
+  width: 100%;
 `;

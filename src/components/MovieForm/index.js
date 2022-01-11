@@ -62,7 +62,7 @@ const MovieForm = () => {
         {!loading && (id === "new" || (id !== "new" && inputState !== {})) ? (
           <form onSubmit={handleSubmit}>
             {id === "new" ? (
-              <h1>Post a new movie.</h1>
+              <h1>Add a new movie</h1>
             ) : (
               <h1>
                 Movie Id: <span>{id}</span>
