@@ -1,11 +1,11 @@
 import { useEffect, useCallback, useState } from "react";
-import { getCustomers } from "../services/customerService";
+import { toast } from "react-toastify";
+import { getCustomers, deleteCustomer } from "../services/customerService";
 
 export const useCustomers = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [toggleRender, setToggleRender] = useState(false);
-  const [errors, setErrors] = useState(false);
 
   const fetchCustomers = useCallback(async () => {
     try {
@@ -21,7 +21,13 @@ export const useCustomers = () => {
 
   useEffect(() => {
     fetchCustomers();
-  }, [toggleRender]);
+  }, [toggleRender, fetchCustomers]);
+
+  const handleDelete = async (customerId) => {
+    await deleteCustomer(customerId);
+    toast.error("Customer deleted!");
+    setToggleRender(!toggleRender);
+  };
 
   return {
     customers,
@@ -29,5 +35,6 @@ export const useCustomers = () => {
     loading,
     toggleRender,
     setToggleRender,
+    handleDelete,
   };
 };

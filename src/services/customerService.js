@@ -13,3 +13,7 @@ export function addCustomer(user) {
 export function getCustomers() {
   return http.get(apiEndpoint);
 }
+
+export function deleteCustomer(customerId) {
+  return http.delete(`${apiEndpoint}/${customerId}`);
+}

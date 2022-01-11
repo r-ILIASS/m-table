@@ -20,18 +20,28 @@ export const Content = styled.div`
     padding: 10px;
     border: var(--border);
     display: flex;
+    align-items: center;
 
     gap: 10px;
 
     span {
       font-size: 0.9rem;
     }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .id {
+    @media screen and (max-width: 1130px) {
+      display: none;
+    }
   }
 `;
 
 export const Form = styled.form`
   width: 300px;
-  max-height: 241px;
   padding: 15px;
   border: var(--border);
   background: var(--white);

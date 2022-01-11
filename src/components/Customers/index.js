@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 // Components
 import Nav from "../Nav";
 import Spinner from "../common/Spinner";
+import Button from "../common/Button";
 // Hooks
 import { useForm } from "./../../hooks/useForm";
 import { useCustomers } from "../../hooks/useCustomers";
@@ -29,32 +30,38 @@ const Customers = () => {
     schema
   );
 
-  const { customers, toggleRender, setToggleRender, loading } = useCustomers();
-
-  console.log("customers ", customers);
+  const { customers, handleDelete, toggleRender, setToggleRender, loading } =
+    useCustomers();
 
   return (
     <>
       <Nav />
       <Wrapper>
         <Content>
-          <Form onSubmit={handleSubmit}>
-            <h3>Add a customer</h3>
-            {renderInput("name", "Name")}
-            {renderInput("phone", "Phone number")}
-            {renderButton("+")}
-          </Form>
+          <div>
+            <Form onSubmit={handleSubmit}>
+              <h3>Add a customer</h3>
+              {renderInput("name", "Name")}
+              {renderInput("phone", "Phone number")}
+              {renderButton("+")}
+            </Form>
+          </div>
           <div>
             {loading && <Spinner />}
             {customers.map((customer) => (
-              <div className="customer__card">
+              <div key={customer._id} className="customer__card">
+                <Button
+                  label="x"
+                  variant="red"
+                  onClick={() => handleDelete(customer._id)}
+                />
                 <p>
                   Name: <span>{customer.name}</span>
                 </p>
                 <p>
                   Phone number: <span>{customer.phone}</span>
                 </p>
-                <p>
+                <p className="id">
                   Id: <span>{customer._id}</span>
                 </p>
               </div>
