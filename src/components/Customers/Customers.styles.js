@@ -12,10 +12,26 @@ export const Content = styled.div`
 
   display: flex;
   gap: 30px;
+
+  .customer__card {
+    margin-bottom: 10px;
+    min-width: 100%;
+    background: var(--white);
+    padding: 10px;
+    border: var(--border);
+    display: flex;
+
+    gap: 10px;
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 export const Form = styled.form`
   width: 300px;
+  max-height: 241px;
   padding: 15px;
   border: var(--border);
   background: var(--white);

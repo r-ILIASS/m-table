@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Joi from "joi";
 // Hooks
 import { useForm } from "../../hooks/useForm";
@@ -9,8 +8,6 @@ import { register } from "../../services/userService";
 import { Wrapper, Content } from "./RegisterForm.styles";
 
 const RegisterForm = () => {
-  const navigate = useNavigate();
-
   const registerSubmit = async () => {
     const res = await register(inputState);
 

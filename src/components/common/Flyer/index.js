@@ -6,7 +6,11 @@ import GithubIcon from "../../../assets/github-icon.svg";
 import { Wrapper } from "./Flyer.styles";
 
 const Flyer = () => (
-  <a href="https://github.com/r-ILIASS/m-table" target="_blank">
+  <a
+    href="https://github.com/r-ILIASS/m-table"
+    target="_blank"
+    rel="noreferrer"
+  >
     <Wrapper image={Background}>
       <h3>Checkout the source code on Github</h3>
       <img src={GithubIcon} alt="github-icon" />

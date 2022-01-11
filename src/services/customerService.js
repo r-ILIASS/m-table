@@ -9,3 +9,7 @@ export function addCustomer(user) {
     },
   });
 }
+
+export function getCustomers() {
+  return http.get(apiEndpoint);
+}

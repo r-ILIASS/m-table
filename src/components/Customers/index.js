@@ -3,8 +3,10 @@ import Joi from "joi";
 import { toast } from "react-toastify";
 // Components
 import Nav from "../Nav";
+import Spinner from "../common/Spinner";
 // Hooks
 import { useForm } from "./../../hooks/useForm";
+import { useCustomers } from "../../hooks/useCustomers";
 // Services
 import { addCustomer } from "../../services/customerService";
 // Styles
@@ -14,6 +16,7 @@ const Customers = () => {
   const submitCustomer = async () => {
     await addCustomer(inputState);
     toast.success("Customer Added ✔");
+    setToggleRender(!toggleRender);
   };
 
   const schema = Joi.object({
@@ -26,6 +29,10 @@ const Customers = () => {
     schema
   );
 
+  const { customers, toggleRender, setToggleRender, loading } = useCustomers();
+
+  console.log("customers ", customers);
+
   return (
     <>
       <Nav />
@@ -37,7 +44,22 @@ const Customers = () => {
             {renderInput("phone", "Phone number")}
             {renderButton("+")}
           </Form>
-          <h1>customer table</h1>
+          <div>
+            {loading && <Spinner />}
+            {customers.map((customer) => (
+              <div className="customer__card">
+                <p>
+                  Name: <span>{customer.name}</span>
+                </p>
+                <p>
+                  Phone number: <span>{customer.phone}</span>
+                </p>
+                <p>
+                  Id: <span>{customer._id}</span>
+                </p>
+              </div>
+            ))}
+          </div>
         </Content>
       </Wrapper>
     </>
