@@ -9,12 +9,12 @@ import Movies from "./components/Movies";
 import MovieForm from "./components/MovieForm";
 import Customers from "./components/Customers";
 import Rentals from "./components/Rentals";
-import "react-toastify/dist/ReactToastify.css";
-import NotFound from "./components/NotFound";
-import "react-toastify/dist/ReactToastify.css";
-import RegisterForm from "./components/RegisterForm";
-// Css
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
+import Logout from "./components/Logout";
+import NotFound from "./components/NotFound";
+// Css
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [user] = useApp();
@@ -23,6 +23,7 @@ function App() {
     <>
       <Header user={user} />
       <Routes>
+        <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/movies/:id" element={<MovieForm />} />
