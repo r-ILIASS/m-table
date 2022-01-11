@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 // Components
 import Button from "../common/Button";
+import User from "../common/User";
 // Styles
 import { Wrapper, Content } from "./Header.styles";
 // Assets
@@ -31,12 +32,12 @@ const Header = ({ user }) => {
           )}
           {user && (
             <>
+              <User name={user.name} />
               <Button
                 variant="blue"
                 label="Logout"
                 onClick={() => navigate("/logout")}
               />
-              <h3>{user.name}</h3>
             </>
           )}
         </div>
