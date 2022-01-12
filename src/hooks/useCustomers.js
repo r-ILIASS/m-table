@@ -5,7 +5,6 @@ import { getCustomers, deleteCustomer } from "../services/customerService";
 export const useCustomers = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [toggleRender, setToggleRender] = useState(false);
 
   const fetchCustomers = useCallback(async () => {
     try {
@@ -21,20 +20,20 @@ export const useCustomers = () => {
 
   useEffect(() => {
     fetchCustomers();
-  }, [toggleRender, fetchCustomers]);
+  }, [fetchCustomers]);
 
   const handleDelete = async (customerId) => {
-    await deleteCustomer(customerId);
-    toast.error("Customer deleted!");
-    setToggleRender(!toggleRender);
+    const { data, status } = await deleteCustomer(customerId);
+    if (data && status === 200) {
+      setCustomers(customers.filter((c) => c._id !== data._id));
+      toast.error("Customer deleted!");
+    }
   };
 
   return {
     customers,
     setCustomers,
     loading,
-    toggleRender,
-    setToggleRender,
     handleDelete,
   };
 };

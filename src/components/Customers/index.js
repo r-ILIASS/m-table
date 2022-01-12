@@ -15,9 +15,12 @@ import { Wrapper, Content, Form } from "./Customers.styles";
 
 const Customers = () => {
   const submitCustomer = async () => {
-    await addCustomer(inputState);
-    toast.success("Customer Added ✔");
-    setToggleRender(!toggleRender);
+    const { data, status } = await addCustomer(inputState);
+
+    if (data && status === 200) {
+      setCustomers((prev) => [...prev, data]);
+      toast.success("Customer Added ✔");
+    }
   };
 
   const schema = Joi.object({
@@ -30,8 +33,7 @@ const Customers = () => {
     schema
   );
 
-  const { customers, handleDelete, toggleRender, setToggleRender, loading } =
-    useCustomers();
+  const { customers, setCustomers, handleDelete, loading } = useCustomers();
 
   return (
     <>
@@ -48,6 +50,7 @@ const Customers = () => {
           </div>
           <div>
             {loading && <Spinner />}
+            <h3>{`Customers count: ${customers.length}`}</h3>
             {customers.map((customer) => (
               <div key={customer._id} className="customer__card">
                 <Button

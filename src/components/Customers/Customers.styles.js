@@ -5,13 +5,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  border: 1px solid red;
   max-width: var(--maxW);
   margin: 0 auto;
   padding: 20px 0;
 
   display: flex;
   gap: 30px;
+
+  h3 {
+    margin-bottom: 20px;
+  }
 
   .customer__card {
     margin-bottom: 10px;
@@ -27,16 +30,15 @@ export const Content = styled.div`
     span {
       font-size: 0.9rem;
     }
-
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-    }
   }
 
   .id {
     @media screen and (max-width: 1130px) {
       display: none;
     }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
