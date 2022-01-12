@@ -10,7 +10,7 @@ const Select = ({ name, label, options, error, ...rest }) => {
           (option) =>
             option._id !== "" && (
               <option key={option._id} value={option._id}>
-                {option.name}
+                {option.name || option.title}
               </option>
             )
         )}
