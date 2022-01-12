@@ -1,6 +1,6 @@
-import http, { apiUrl } from "./httpService";
+import http from "./httpService";
 
-const apiEndpoint = apiUrl + "/genres";
+const apiEndpoint = "/genres";
 
 export function getGenres() {
   return http.get(apiEndpoint);

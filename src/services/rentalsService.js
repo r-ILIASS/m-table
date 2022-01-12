@@ -1,6 +1,6 @@
-import http, { apiUrl } from "./httpService";
+import http from "./httpService";
 
-const apiEndpoint = apiUrl + "/rentals";
+const apiEndpoint = "/rentals";
 
 export function addRental(movieId, customerId) {
   return http.post(

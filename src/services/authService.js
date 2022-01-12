@@ -1,6 +1,6 @@
-import http, { apiUrl } from "./httpService";
+import http from "./httpService";
 
-const apiEndpoint = apiUrl + "/auth";
+const apiEndpoint = "/auth";
 
 export function login(user) {
   return http.post(apiEndpoint, user, {
