@@ -28,8 +28,14 @@ const LoginForm = () => {
     password: Joi.string().min(5).max(30).label("Password").required(),
   });
 
-  const { inputState, setErrors, handleSubmit, renderInput, renderButton } =
-    useForm(loginSubmit, schema);
+  const {
+    inputState,
+    setErrors,
+    handleSubmit,
+    renderInput,
+    renderButton,
+    renderDemoButton,
+  } = useForm(loginSubmit, schema);
 
   return (
     <Wrapper>
@@ -39,6 +45,7 @@ const LoginForm = () => {
           {renderInput("email", "Email")}
           {renderInput("password", "Password", "password")}
           {renderButton("Login")}
+          {renderDemoButton()}
         </form>
       </Content>
     </Wrapper>

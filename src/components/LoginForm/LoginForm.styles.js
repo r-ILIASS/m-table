@@ -92,5 +92,9 @@ export const Content = styled.div`
       font-weight: 500;
       cursor: pointer;
     }
+
+    .demo {
+      background: var(--red);
+    }
   }
 `;

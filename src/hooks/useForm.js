@@ -65,6 +65,19 @@ export const useForm = (submitCallBack, joiSchema) => {
     return <button type="submit">{label}</button>;
   };
 
+  const renderDemoButton = () => {
+    return (
+      <button
+        className="demo"
+        onClick={() =>
+          setInputState({ email: "hrperson@email.com", password: "12345" })
+        }
+      >
+        Demo Login
+      </button>
+    );
+  };
+
   return {
     inputState,
     setErrors,
@@ -73,5 +86,6 @@ export const useForm = (submitCallBack, joiSchema) => {
     renderInput,
     renderSelect,
     renderButton,
+    renderDemoButton,
   };
 };
