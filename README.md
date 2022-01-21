@@ -10,11 +10,11 @@ A simple yet complex ReactJs application where I made sure that all the componen
 In this application, I exercised the use of custom hooks and composition to encapsulate the logic necessary for fetching data, handling multiple forms, paginating, and sorting the data on the client side. I also applied cool tricks I learned lately using useCallback() and useMemo() hooks to avoid some annoying React behaviors. **Example:**
 
 <p>
-  <img width="450px" src="./ReadMeAssets/carbon.png" />
+  <img width="520px" src="./ReadMeAssets/carbon.png" />
 </p>
 
 ---
 
-## Necessary environement variable
+## Necessary environment variable
 
 `REACT_APP_API_URL=https://PathToMyBackend/api`
