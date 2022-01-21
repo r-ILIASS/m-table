@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { getUser } from "../services/userService";
 
 export const useApp = () => {
@@ -16,6 +17,19 @@ export const useApp = () => {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetchUser(jwt);
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("notified") === "true") return;
+
+    toast.info("I apologize for the slow initial loading!", {
+      autoClose: 5000,
+    });
+    toast.info(
+      "My backend is hosted on a free Heroku account. Heroku dynos go to sleep after a slight period of inactivity!",
+      { autoClose: 10000 }
+    );
+    localStorage.setItem("notified", "true");
   }, []);
 
   return [user];
