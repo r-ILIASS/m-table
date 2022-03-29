@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   padding: 0 20px;
-  background-color: cyan; // remove
 `;
 
 export const Content = styled.div`
-  background-color: gray; // remove
   max-width: var(--maxW);
   margin: 0 auto;
   padding: 20px 0;
