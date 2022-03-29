@@ -2,31 +2,24 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   padding: 0 20px;
+  background-color: cyan; // remove
 `;
 
 export const Content = styled.div`
+  background-color: gray; // remove
   max-width: var(--maxW);
   margin: 0 auto;
   padding: 20px 0;
-  display: flex;
-  gap: 64px;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  gap: 1rem;
+
+  @media screen and (max-width: 897px) {
+    grid-template-columns: 2fr 10fr;
+  }
 
   p {
     font-size: 1.37rem;
-  }
-
-  .space {
-    width: 24%;
-    height: 297px;
-    display: flex;
-
-    @media screen and (max-width: 1054px) {
-      display: none;
-    }
-  }
-
-  .mt {
-    margin-top: 61px;
   }
 `;
 
@@ -36,8 +29,4 @@ export const Hflex = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-`;
-
-export const Svg = styled.img`
-  width: 100%;
 `;

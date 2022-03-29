@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [user] = useApp();
+  console.log(process.env.REACT_APP_API_URL);
 
   return (
     <>

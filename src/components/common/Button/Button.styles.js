@@ -7,13 +7,10 @@ export const Wrapper = styled.button`
       switch (variant) {
         case "blue":
           return "--blue";
-          break;
         case "empty":
           return "--white";
-          break;
         case "red":
           return "--red";
-          break;
         default:
           return "--white";
       }

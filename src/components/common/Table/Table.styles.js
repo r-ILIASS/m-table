@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledTable = styled.table`
   background: var(--white);
   border: var(--border);
+  width: 100%;
   min-width: 468px;
   font-size: 0.9rem;
   margin: 20px 0;
@@ -31,10 +32,6 @@ export const StyledTable = styled.table`
 
     a {
       color: var(--blue);
-    }
-
-    @media screen and (max-width: 768px) {
-      max-width: 200px;
     }
   }
 `;
