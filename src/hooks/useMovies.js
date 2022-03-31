@@ -9,7 +9,7 @@ export const useMovies = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortColumn, setSortColumn] = useState({});
   const [loading, setLoading] = useState(false);
